@@ -4,7 +4,7 @@ from queue import Queue
 from scapy.all import *
 from queue import Queue
 import multiprocessing
-
+import os
 no_of_process = 5
 
 
@@ -48,5 +48,6 @@ for i in range(0, no_of_process):
     process = multiprocessing.Process(target=run, )
 
 for i in range (0,no_of_process):
+    print(f"process id {os.getpid()}")
     process.start()
     process.join()
