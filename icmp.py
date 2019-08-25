@@ -39,6 +39,7 @@ def worker():
 
 
 def run():
+    print(f"process id {os.getpid()}")
     create_thread()
     create_jobs()
     worker()
@@ -48,6 +49,6 @@ for i in range(0, no_of_process):
     process = multiprocessing.Process(target=run, )
 
 for i in range (0,no_of_process):
-    print(f"process id {os.getpid()}")
+
     process.start()
     process.join()
