@@ -9,7 +9,7 @@ no_of_process = 5
 q = Queue()
 
 def launch():
-    p = (IP(src="35.202.52.252", dst="35.193.17.254") / ICMP())
+    p = (IP(src="35.225.200.175", dst="35.193.17.254") / ICMP())
     send(p, count=20000)
 
 
