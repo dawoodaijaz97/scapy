@@ -6,7 +6,7 @@ from queue import Queue
 import multiprocessing
 import os
 no_of_process = 5
-
+q = Queue()
 
 def launch():
     p = (IP(src="35.202.52.252", dst="35.193.17.254") / ICMP())
