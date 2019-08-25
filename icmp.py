@@ -15,7 +15,7 @@ def launch():
 
 NUMBER_OF_WORKERS = 10
 NUMBER_OF_JOBS = 10
-q = Queue()
+total_process = []
 
 
 def create_thread():
@@ -47,8 +47,9 @@ def run():
 
 for i in range(0, no_of_process):
     process = multiprocessing.Process(target=run, )
+    process.start()
+    total_process.append(process)
 
 for i in range (0,no_of_process):
 
-    process.start()
-    process.join()
+    total_process[i].join()
